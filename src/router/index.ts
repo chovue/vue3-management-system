@@ -6,12 +6,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
+      path: '/',
       component: Login
     },
     {
-      path: '/',
-      name: 'home',
+      path: '/home',
+      name: '',
       component: Home,
       children: [
         {
@@ -38,12 +38,11 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const islogin = localStorage.getItem('user')
-  if (!islogin && to.path !== '/login') {
-    next('/login');
+  if (!islogin && to.path !== '/') {
+    next('/');
   } else {
     next()
   }
-
 }
 )
 export default router

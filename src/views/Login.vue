@@ -1,7 +1,5 @@
 <script setup lang="ts" name="login">
 
-
-
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -9,7 +7,6 @@ const submit = () => {
   localStorage.setItem('user', 'hl');
   router.push('home')
 }
-
 
 </script>
 
