@@ -23,10 +23,18 @@ const router = createRouter({
           component: () => import('../views/Dashboard.vue')
         },
         {
-          path: '/about',
-          name: 'about',
+          path: '/table',
+          name: 'table',
           meta: {
-            title: '其它页面'
+            title: '简单表格'
+          },
+          component: () => import('../views/AboutView.vue')
+        },
+        {
+          path: '/complexTable',
+          name: 'complexTable',
+          meta: {
+            title: '复杂表格'
           },
           component: () => import('../views/AboutView.vue')
         }
