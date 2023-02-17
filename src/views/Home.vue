@@ -13,11 +13,16 @@ import { RouterView, } from 'vue-router'
         <el-menu default-active="home" style="min-height: 100%;" theme="dark" router>
           <el-menu-item index="home"><el-icon><icon-menu /></el-icon>首页
           </el-menu-item>
-          <el-menu-item index="about">
-            <el-icon>
-              <document />
-            </el-icon>其它页
-          </el-menu-item>
+          <el-sub-menu index="1">
+            <template #title>
+              <el-icon>
+                <Document />
+              </el-icon>
+              <span>表格</span>
+            </template>
+            <el-menu-item index="table">简单表格</el-menu-item>
+            <el-menu-item index="complexTable">复杂表格</el-menu-item>
+          </el-sub-menu>
         </el-menu>
       </el-aside>
       <el-main>
@@ -28,7 +33,7 @@ import { RouterView, } from 'vue-router'
         </RouterView>
       </el-main>
     </el-container>
-</div>
+  </div>
 </template>
 
 <style scoped lang="scss">

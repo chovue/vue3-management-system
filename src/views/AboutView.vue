@@ -1,7 +1,11 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-</div>
+    <Table />
+  </div>
 </template>
+
+<script setup lang="ts" name="about">
+import Table from "../components/Table.vue"
+</script>
 
 <style></style>
