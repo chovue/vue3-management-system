@@ -5,14 +5,11 @@
         <img src="https://github.com/HearLing.png" alt="" />
         <h1>管理员 - HearLing</h1>
       </div>
-      <div>
+      <div class="todolist">
         <h3 style="margin-bottom:10px">TODO List</h3>
-        <el-progress :percentage="65.5" color="#42b983"></el-progress>
-        首页
-        <el-progress :percentage="10.5" color="#f1e05a"></el-progress>
-        代办列表
-        <el-progress :percentage="5.5"></el-progress>
-        其它页面规划
+        <span>首页</span><el-progress :percentage="65.5" color="#42b983"></el-progress>
+        <span>代办列表</span><el-progress :percentage="10.5" color="#f1e05a"></el-progress>
+        <span>其它页面规划</span><el-progress :percentage="5.5"></el-progress>
       </div>
     </div>
     <div class="text">
@@ -25,16 +22,10 @@
         <div class="dots"><span></span> <span></span> <span></span></div>
       </a>
     </div>
-</div>
+  </div>
 </template>
 
 <script setup lang="ts">
-
-
-
-
-
-
 
 </script>
 
@@ -62,6 +53,11 @@
       margin-left: 10px;
       font-weight: 300;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    span {
+      font-size: 14px;
+      color: #606266
     }
   }
 
@@ -136,17 +132,5 @@ img {
 .tile:hover span {
   opacity: 1;
   transform: translateY(0px);
-}
-
-.dots span:nth-child(1) {
-  transition-delay: 0.05s;
-}
-
-.dots span:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.dots span:nth-child(3) {
-  transition-delay: 0.15s;
 }
 </style>
