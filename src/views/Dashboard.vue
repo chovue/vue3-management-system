@@ -3,7 +3,8 @@
 
 import * as echarts from 'echarts'
 import { onMounted, ref } from 'vue';
-import Card from '../components/Card.vue'
+import Card from '../components/Card.vue';
+import TodoList from '../components/TodoList.vue';
 
 const pie = ref();
 const line = ref();
@@ -146,7 +147,9 @@ onMounted(() => {
         </el-card>
       </el-col>
       <el-col :span="16">
-
+        <el-card shadow="hover" class="card">
+          <TodoList />
+        </el-card>
       </el-col>
     </el-row>
     <el-row :gutter="20">
@@ -166,7 +169,7 @@ onMounted(() => {
       </el-col>
     </el-row>
     <!-- <TheWelcome /> -->
-</div>
+  </div>
 </template>
 
 <style scoped lang="scss">
