@@ -13,14 +13,11 @@
       </div>
     </div>
     <div class="text">
-      <h2 class="animate-text">我的前端学习网站 - <a href="https://chodocs.cn/">ChoDocs</a></h2>
+      <h3 class="animate-text">我的前端学习网站 - <a href="https://chodocs.cn/">ChoDocs</a></h3>
       <p class="animate-text">
         一站式前端内容网站，完善前端的学习路线、知识体系
         项目已经在 GitHub 上开源，欢迎加入我们一起学习，分享前端知识 😸 ~
       </p>
-      <a href="https://chodocs.cn/">
-        <div class="dots"><span></span> <span></span> <span></span></div>
-      </a>
     </div>
   </div>
 </template>
@@ -37,6 +34,20 @@
   position: relative;
   cursor: pointer;
   transition: all 0.4s ease-out;
+
+  &:hover .intro {
+    opacity: 0.1;
+  }
+
+  &:hover .animate-text {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &:hover span {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 
   .intro {
     width: 100%;
@@ -64,12 +75,11 @@
   .text {
     z-index: 99;
     position: absolute;
-    padding: 30px;
+    padding: 20px;
     height: 100%;
 
     h2 {
       font-weight: 100;
-      margin-top: 20px;
       font-style: italic;
       transform: translateX(200px);
     }
@@ -80,6 +90,48 @@
       line-height: 25px;
       transform: translateX(-200px);
       transition-delay: 0.2s;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px 0;
+      position: relative;
+      color: #1155cb;
+      font-family: "Futura";
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 22px;
+      z-index: 2;
+      transition: 0.2s ease-in-out;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        left: 0;
+        bottom: -45px;
+        z-index: -1;
+        transform: scaleX(0);
+        transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1);
+        transform-origin: right;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200%25' height='100%25'%3E%3Cdefs%3E%3Cstyle%3E .wave%7B stroke:%23e0ff00; stroke-width:2; stroke-linecap:square; %7D %3C/style%3E%3C/defs%3E%3Cpattern id='wavePattern' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath fill='none' class='wave' d='M 0 40 Q 20 40 40 40 Q 60 40 80 40' /%3E%3C/pattern%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='url(%23wavePattern)'%3E%3C/rect%3E%3C/svg%3E") 0px 50%/80px 80px repeat-x;
+      }
+
+      &:hover {
+        color: #c2ff00;
+      }
+
+      &:hover:before {
+        transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-origin: left;
+        -webkit-animation: waving 3s linear infinite;
+        animation: waving 3s linear infinite;
+        transform: scaleX(1);
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200%25' height='100%25'%3E%3Cdefs%3E%3Cstyle%3E .wave%7B animation:wave 2s linear infinite; animation-delay:0s; stroke:%23e0ff00; stroke-width:2; stroke-dashoffset:0px; stroke-dasharray:80px; stroke-linecap:round; fill:%231155cb; %7D @keyframes wave%7B 25%25%7B stroke-dashoffset:-80px; %7D 50%25%7B stroke-dashoffset:-80px; %7D 100%25%7B stroke-dashoffset:-160px; %7D %7D %3C/style%3E%3C/defs%3E%3Cpattern id='wavePattern' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath class='wave' d='M 0 40 L 50 40 L 80 40 L 54 44 L 54 36 L 80 40 ' /%3E%3C/pattern%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='url(%23wavePattern)'%3E%3C/rect%3E%3C/svg%3E") calc(100% - 10px) 50%/40px 80px no-repeat,
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200%25' height='100%25'%3E%3Cdefs%3E%3Cstyle%3E .wave%7B stroke:%23e0ff00; stroke-width:2; stroke-linecap:round; %7D %3C/style%3E%3C/defs%3E%3Cpattern id='wavePattern' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath fill='none' class='wave' d='M 0 40 Q 20 40 40 40 Q 60 40 80 40' /%3E%3C/pattern%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='url(%23wavePattern)'%3E%3C/rect%3E%3C/svg%3E") 0px 50% / calc(100% - 25px) 80px no-repeat;
+        animation: none;
+      }
     }
   }
 }
@@ -95,42 +147,15 @@ img {
   transition: all 0.6s ease-in-out;
 }
 
-.tile:hover .intro {
-  opacity: 0.2;
+@-webkit-keyframes waving {
+  to {
+    background-position: 80px 50%, 160px 50%;
+  }
 }
 
-.tile:hover .animate-text {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.dots {
-  position: absolute;
-  bottom: 20px;
-  right: 30px;
-  margin: 0 auto;
-  width: 30px;
-  height: 30px;
-  color: currentColor;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.dots span {
-  width: 5px;
-  height: 5px;
-  background-color: currentColor;
-  border-radius: 50%;
-  display: block;
-  opacity: 0;
-  transition: transform 0.4s ease-out, opacity 0.5s ease;
-  transform: translateY(30px);
-}
-
-.tile:hover span {
-  opacity: 1;
-  transform: translateY(0px);
+@keyframes waving {
+  to {
+    background-position: 80px 50%, 160px 50%;
+  }
 }
 </style>
