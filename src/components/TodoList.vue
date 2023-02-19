@@ -2,16 +2,15 @@
   <div class="todo-list">
     <div className='content'>
       <div className='todoListDiv'>
-        <h2>待办事项清单</h2>
         <div className='inputDiv'>
-          <input v-model="inputValue" placeholder="添加待办" />
+          <input v-model="inputValue" placeholder="添加待办事项" />
           <button @click="clickBtn"></button>
         </div>
         <div className='listDiv'>
           <ul v-for="item in todoStore.todoList">
             <li class="task-list-item" :key="item.id">
               <label class="task-list-item-label">
-                <input type="checkbox">
+                <el-checkbox v-model="item.complete" />
                 <span> {{ item.content }}</span>
               </label>
               <span class="delete-btn" @click="deletItem(item)"></span>
@@ -59,6 +58,11 @@ const deletItem = (item: ListItem) => {
   width: 500px;
 }
 
+.listDiv {
+  height: 150px;
+  overflow-y: scroll;
+}
+
 input {
   margin-right: 12px;
   width: 100%;
@@ -82,57 +86,33 @@ button {
 
 .inputDiv {
   display: flex;
+  margin: 10px 0px 6px;
 }
 
 ul {
   list-style: none;
-  padding: 0;
+  padding-right: 12px;
 }
 
-li {
-  background-color: rgb(136 130 147 / 48%);
-  border-radius: 4px;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  color: white;
-}
 
 .task-list-item {
-  background-color: rgba(136, 130, 147, 0.48);
+  color: #5470c6;
+  font-size: 16px;
+  height: 26px;
+  background-color: rgba(180, 178, 208, 0.261);
   border-radius: 4px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   padding: 8px;
 
-  input {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 1px solid #fff;
-    background-size: 0;
-    transition: 0.2s;
-    margin-right: 8px;
-    flex-shrink: 0;
-    margin-top: 4px;
-  }
 
-  input:checked+span {
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: line-through rgba(255, 255, 255, 0.8);
-  }
+}
 
-  input:hover {
-    border-color: #ee9ca7;
-    box-shadow: 0 0 0 3px rgba(238, 156, 167, 0.4);
-  }
-
-  input:checked {
-    background-color: #ee9ca7;
-    border: 1px solid rgba(238, 156, 167, 0.4);
-  }
+.el-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
 }
 
 .delete-btn {

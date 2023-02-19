@@ -5,6 +5,7 @@ import * as echarts from 'echarts'
 import { onMounted, ref } from 'vue';
 import Card from '../components/Card.vue';
 import TodoList from '../components/TodoList.vue';
+import Statistic from '@/components/Statistic.vue';
 
 const pie = ref();
 const line = ref();
@@ -146,7 +147,12 @@ onMounted(() => {
           <Card />
         </el-card>
       </el-col>
-      <el-col :span="16">
+      <el-col :span="6">
+        <el-card shadow="hover" class="card">
+          <Statistic />
+        </el-card>
+      </el-col>
+      <el-col :span="10">
         <el-card shadow="hover" class="card">
           <TodoList />
         </el-card>
