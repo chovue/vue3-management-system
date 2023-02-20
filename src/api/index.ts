@@ -13,10 +13,11 @@ interface ResultData<T = any> extends Result {
   data?: T;
 }
 
-const MOCKURL: string = 'https://www.fastmock.site/mock/5edf4a9af54c60266580ac98069f0b16/manage'
+const MOCKURL: string = 'https://mock.apifox.cn/m1/2328533-0-default'
 
 const service: AxiosInstance = axios.create({
   baseURL: MOCKURL,
+  headers: { apifoxToken: sessionStorage.getItem('token') },
 });
 
 /**
