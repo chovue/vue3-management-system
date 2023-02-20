@@ -73,6 +73,11 @@ input {
   background-color: transparent;
 }
 
+.is-checked+span {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: line-through rgba(255, 255, 255, 0.8);
+}
+
 button {
   border: none;
   width: 44px;
