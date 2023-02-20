@@ -1,4 +1,5 @@
 # vue3-management-system
+Language: English | [中文简体](README-ZH.md)
 
 This template should help get you started developing with Vue 3 in Vite.
 
