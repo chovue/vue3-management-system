@@ -38,7 +38,7 @@ const submit = (formEl: FormInstance | undefined) => {
         type: 'success',
       })
       window.sessionStorage.setItem('token', token);
-      router.push('home')
+      router.push('/home')
     } else {
       console.log('error submit!')
       return false
