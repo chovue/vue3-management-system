@@ -37,7 +37,7 @@ const submit = (formEl: FormInstance | undefined) => {
         message: '登录成功 ~',
         type: 'success',
       })
-      window.sessionStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
       router.push('/home')
     } else {
       console.log('error submit!')
