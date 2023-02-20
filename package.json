@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "lint": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint": "npm run lint:staged -- .",
+    "lint:staged": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -42,6 +43,6 @@
     "vue-tsc": "^1.0.12"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "npm run lint --"
+    "*.{js,ts,vue}": "npm run lint:staged --"
   }
 }
