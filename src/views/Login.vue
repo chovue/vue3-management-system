@@ -223,7 +223,7 @@ const registerRules = reactive<FormRules>({
   color: #124;
   background-image: radial-gradient(rgba(255, 0, 0, 0.3),
       rgba(255, 0, 0, 0) 40vw),
-    radial-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0) 40vw),
+    radial-gradient(rgb(64 158 255 / 43%), rgba(0, 128, 0, 0) 40vw),
     radial-gradient(rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0) 40vw),
     radial-gradient(rgba(255, 255, 0, 0.3), rgba(255, 255, 0, 0) 40vw),
     radial-gradient(rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0) 40vw);
