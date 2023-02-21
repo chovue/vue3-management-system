@@ -41,6 +41,22 @@ const router = createRouter({
             title: '复杂表格'
           },
           component: () => import('../views/AboutView.vue')
+        },
+        {
+          path: '/basicForm',
+          name: 'basicForm',
+          meta: {
+            title: '基础表单'
+          },
+          component: () => import('../views/BasicForm.vue')
+        },
+        {
+          path: '/stepForm',
+          name: 'stepForm',
+          meta: {
+            title: '基础表单'
+          },
+          component: () => import('../views/StepForm.vue')
         }
       ]
     },
