@@ -23,6 +23,16 @@ import { RouterView, } from 'vue-router'
             <el-menu-item index="table">简单表格</el-menu-item>
             <el-menu-item index="complexTable">复杂表格</el-menu-item>
           </el-sub-menu>
+          <el-sub-menu index="2">
+            <template #title>
+              <el-icon>
+                <Document />
+              </el-icon>
+              <span>表单</span>
+            </template>
+            <el-menu-item index="basicForm">基础表单</el-menu-item>
+            <el-menu-item index="stepForm">分步表单</el-menu-item>
+          </el-sub-menu>
         </el-menu>
       </el-aside>
       <el-main>
