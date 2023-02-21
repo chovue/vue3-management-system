@@ -26,7 +26,7 @@
       </el-row>
     </div>
 
-    <el-table :data="table.list" style="width: 100%">
+    <el-table :data="table.list" style="width: 100%" v-loading="table.loading">
       <el-table-column fixed prop="pname" label="商品名称" width="250" />
       <el-table-column fixed prop="name" label="操作人" width="120" />
       <el-table-column fixed prop="date" label="时间" width="150" />
@@ -67,7 +67,8 @@ onMounted(() => {
 })
 const table = reactive({
   total: 0,
-  list: []
+  list: [],
+  loading: false
 })
 const search = reactive({
   status: [],
@@ -123,8 +124,10 @@ const options = [{
 
 const detailId = ''
 const getData = () => {
+  table.loading = true
   get('/api/shopList', {}).then((res: any) => {
     console.log('data==>', res.data)
+    table.loading = false
     const { code, data, msg } = res.data
     if (code == 200) {
       table.list = data.list
