@@ -57,6 +57,14 @@ const router = createRouter({
             title: '基础表单'
           },
           component: () => import('../views/StepForm.vue')
+        },
+        {
+          path: '/user',
+          name: 'user',
+          meta: {
+            title: '个人中心'
+          },
+          component: () => import('../views/User.vue')
         }
       ]
     },
