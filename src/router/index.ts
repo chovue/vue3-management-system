@@ -32,7 +32,7 @@ const router = createRouter({
           meta: {
             title: '简单表格'
           },
-          component: () => import('../views/AboutView.vue')
+          component: () => import('../views/Table.vue')
         },
         {
           path: '/complexTable',
@@ -40,7 +40,7 @@ const router = createRouter({
           meta: {
             title: '复杂表格'
           },
-          component: () => import('../views/AboutView.vue')
+          component: () => import('../views/ComplexTable.vue')
         },
         {
           path: '/basicForm',
