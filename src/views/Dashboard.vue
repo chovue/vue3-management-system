@@ -325,7 +325,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
         </el-card>
       </el-col>
     </el-row>
-    <el-row :gutter="20">
+    <el-row :gutter="20" style="margin-top: 10px">
       <el-col :span="24">
         <el-card shadow="hover">
           <el-tabs
