@@ -1,5 +1,9 @@
 <!-- 基础表单页面 -->
 <template>
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item>表单</el-breadcrumb-item>
+    <el-breadcrumb-item>基础表单</el-breadcrumb-item>
+  </el-breadcrumb>
   <div class="basic-form-page">
     <h1>基础表单页面</h1>
     <el-form :model="form" label-width="120px">
@@ -14,13 +18,22 @@
       </el-form-item>
       <el-form-item label="活动时间">
         <el-col :span="11">
-          <el-date-picker v-model="form.date1" type="date" placeholder="Pick a date" style="width: 100%" />
+          <el-date-picker
+            v-model="form.date1"
+            type="date"
+            placeholder="Pick a date"
+            style="width: 100%"
+          />
         </el-col>
         <el-col :span="2" class="text-center">
           <span class="text-gray-500">-</span>
         </el-col>
         <el-col :span="11">
-          <el-time-picker v-model="form.date2" placeholder="Pick a time" style="width: 100%" />
+          <el-time-picker
+            v-model="form.date2"
+            placeholder="Pick a time"
+            style="width: 100%"
+          />
         </el-col>
       </el-form-item>
       <el-form-item label="即时交付">
@@ -52,7 +65,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive } from 'vue';
 
 // do not use same name with ref
 const form = reactive({
@@ -64,14 +77,14 @@ const form = reactive({
   type: [],
   resource: '',
   desc: '',
-})
+});
 
 const onSubmit = () => {
-  console.log('submit!')
-}
+  console.log('submit!');
+};
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .basic-form-page {
   width: 600px;
 

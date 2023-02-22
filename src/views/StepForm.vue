@@ -1,5 +1,9 @@
 <!-- 分步骤表单 -->
 <template>
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item>表单</el-breadcrumb-item>
+    <el-breadcrumb-item>分步表单</el-breadcrumb-item>
+  </el-breadcrumb>
   <div class="step-home-page">
     <el-steps :active="active" align-center finish-status="success">
       <el-step title="填写转账信息" :icon="Edit" />
