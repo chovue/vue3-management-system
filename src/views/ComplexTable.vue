@@ -134,7 +134,7 @@ const gridOptions = reactive<VxeGridProps>({
     ]
   },
   columns: [
-    { type: "checkbox", field: 'name', title: '商品名', fixed: 'left', titlePrefix: { message: '名称必须填写！' }, editRender: { name: 'input', attrs: { placeholder: '请输入名称' } } },
+    { type: "checkbox", minWidth: 160, field: 'name', title: '商品名', fixed: 'left', titlePrefix: { message: '名称必须填写！' }, editRender: { name: 'input', attrs: { placeholder: '请输入名称' } } },
     {
       title: '分类',
       children: [
