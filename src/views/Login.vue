@@ -38,6 +38,7 @@ const submit = (formEl: FormInstance | undefined) => {
         type: 'success',
       })
       sessionStorage.setItem('token', token);
+      localStorage.setItem('username', loginForm.name);
       router.push('/dashboard')
     } else {
       console.log('error submit!')
