@@ -1,11 +1,7 @@
 <script setup lang="ts" name="home">
-import { computed } from 'vue';
-import {
-  RouterView,
-  useRoute,
-  useRouter,
-  type RouteRecordRaw,
-} from 'vue-router';
+import { computed, ref } from 'vue';
+import type { TabsPaneContext } from 'element-plus';
+import { RouterView, useRoute, useRouter } from 'vue-router';
 import SideBar from '../components/SideBar.vue';
 
 const route = useRoute();
@@ -19,6 +15,12 @@ const handleCommand = (command: string) => {
   } else if (command == 'user') {
     router.push('/user');
   }
+};
+
+const activeName = ref('first');
+
+const handleClickMessage = (tab: TabsPaneContext, event: Event) => {
+  console.log(tab, event);
 };
 
 const breadcrumb = computed(() => {
@@ -48,13 +50,50 @@ const username = localStorage.getItem('username') || '';
             src="https://img.shields.io/github/stars/chodocs/chodocs?style=social"
           />
         </a>
+        <!-- 消息通知 -->
+        <el-dropdown trigger="click">
+          <el-icon class="message" size="20px" @click="handleClickMessage">
+            <Bell />
+          </el-icon>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-tabs
+                style="width: 300px"
+                v-model="activeName"
+                class="demo-tabs"
+                @tab-click="handleClickMessage"
+              >
+                <el-tab-pane label="通知" name="first"></el-tab-pane>
+                <el-tab-pane label="消息" name="second"> </el-tab-pane>
+                <el-tab-pane label="待办" name="third"> </el-tab-pane>
+              </el-tabs>
+              <div class="message-container" style="display: flex">
+                <div class="message-logo">
+                  <img src="../assets/user.svg" alt="" />
+                </div>
+                <div class="message-text">
+                  <div class="message-content">你收到了 14 份新周报</div>
+                  <div class="message-time">6年前</div>
+                </div>
+              </div>
+              <el-button-group style="inline-size: 100%">
+                <el-button type="text" style="inline-size: 50%"
+                  >清空通知</el-button
+                >
+                <el-button type="text" style="inline-size: 50%"
+                  >查看更多</el-button
+                >
+              </el-button-group>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             <img src="../assets/user.svg" alt="" />
             <span class="name"> {{ username }}</span>
             <el-icon>
-              <component is="ArrowDown"></component>
+              <ArrowDown />
             </el-icon>
           </span>
           <template #dropdown>
@@ -104,6 +143,11 @@ const username = localStorage.getItem('username') || '';
   .right {
     display: flex;
     align-items: center;
+
+    .message {
+      padding: 0px 8px;
+      cursor: pointer;
+    }
 
     .name {
       font-size: 16px;
