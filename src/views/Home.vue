@@ -22,6 +22,17 @@ const handleCommand = (command: string) => {
     router.push('/user');
   }
 };
+
+const breadcrumb = computed(() => {
+  return {
+    name: route.name,
+    title: route.meta.title,
+    path: route.fullPath,
+  };
+});
+
+console.log('breadcrumb===>', breadcrumb);
+
 const username = localStorage.getItem('username') || '';
 </script>
 
@@ -103,6 +114,13 @@ const username = localStorage.getItem('username') || '';
       </el-aside>
       <!-- 主显示 -->
       <el-main>
+        <!-- header 面包屑 -->
+        <el-breadcrumb separator="/" style="margin-bottom: 12px">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: breadcrumb.path }">{{
+            breadcrumb.title
+          }}</el-breadcrumb-item>
+        </el-breadcrumb>
         <RouterView v-slot="{ Component }">
           <keep-alive>
             <component :is="Component"></component>
