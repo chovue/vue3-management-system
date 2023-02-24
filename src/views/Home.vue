@@ -1,18 +1,16 @@
 <script setup lang="ts" name="home">
-import {
-  Document,
-  List,
-  Menu as IconMenu,
-  UserFilled,
-} from '@element-plus/icons-vue';
 import { computed } from 'vue';
-import { RouterView, useRoute, useRouter } from 'vue-router';
+import {
+  RouterView,
+  useRoute,
+  useRouter,
+  type RouteRecordRaw,
+} from 'vue-router';
+import SideBar from '../components/SideBar.vue';
+
 const route = useRoute();
 const router = useRouter();
-const defaultActive = computed(() => {
-  console.log('route', route);
-  return route.path;
-});
+
 const handleCommand = (command: string) => {
   if (command == 'loginout') {
     localStorage.removeItem('username');
@@ -26,12 +24,10 @@ const handleCommand = (command: string) => {
 const breadcrumb = computed(() => {
   return {
     name: route.name,
-    title: route.meta.title,
+    title: route.meta.name || route.meta.title,
     path: route.fullPath,
   };
 });
-
-console.log('breadcrumb===>', breadcrumb);
 
 const username = localStorage.getItem('username') || '';
 </script>
@@ -57,8 +53,8 @@ const username = localStorage.getItem('username') || '';
           <span class="el-dropdown-link">
             <img src="../assets/user.svg" alt="" />
             <span class="name"> {{ username }}</span>
-            <el-icon class="el-icon--right">
-              <arrow-down />
+            <el-icon>
+              <component is="ArrowDown"></component>
             </el-icon>
           </span>
           <template #dropdown>
@@ -75,42 +71,7 @@ const username = localStorage.getItem('username') || '';
     <el-container class="fillcontain">
       <!-- 侧边显示 -->
       <el-aside class="aside">
-        <el-menu
-          :default-active="defaultActive"
-          style="min-height: 100%"
-          theme="dark"
-          router
-        >
-          <el-menu-item index="/dashboard"
-            ><el-icon><icon-menu /></el-icon>首页
-          </el-menu-item>
-          <el-sub-menu index="1">
-            <template #title>
-              <el-icon>
-                <List />
-              </el-icon>
-              <span>表格</span>
-            </template>
-            <el-menu-item index="/table">简单表格</el-menu-item>
-            <el-menu-item index="/complexTable">复杂表格</el-menu-item>
-          </el-sub-menu>
-          <el-sub-menu index="2">
-            <template #title>
-              <el-icon>
-                <Document />
-              </el-icon>
-              <span>表单</span>
-            </template>
-            <el-menu-item index="/basicForm">基础表单</el-menu-item>
-            <el-menu-item index="/stepForm">分步表单</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="/user">
-            <el-icon>
-              <UserFilled />
-            </el-icon>
-            个人中心
-          </el-menu-item>
-        </el-menu>
+        <SideBar></SideBar>
       </el-aside>
       <!-- 主显示 -->
       <el-main>
