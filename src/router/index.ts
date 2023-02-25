@@ -112,6 +112,10 @@ const router = createRouter({
     },
     {
       path: '/:pathMatch(.*)*',
+      redirect: '/not-found',
+    },
+    {
+      path: '/not-found',
       name: 'not-found',
       meta: {
         title: '未知页面',
