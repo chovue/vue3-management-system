@@ -23,7 +23,7 @@ const router = createRouter({
           name: 'dashboard',
           meta: {
             icon: 'Menu',
-            name: '系统首页'
+            name: '系统首页',
           },
           component: () => import('../views/Dashboard.vue'),
         },
@@ -32,32 +32,34 @@ const router = createRouter({
           name: 'search',
           meta: {
             parent: '/table',
-            name: '搜索表格'
+            name: '搜索表格',
           },
           children: [
             {
               path: '/articles',
               name: 'articles',
               meta: {
-                name: '搜索列表（文章）'
-              },
-              component: () => import('../views/Articles.vue'),
-            }, {
-              path: '/projects',
-              name: 'projects',
-              meta: {
-                name: '搜索列表（项目）'
-              },
-              component: () => import('../views/Articles.vue'),
-            }, {
-              path: '/applications',
-              name: 'applications',
-              meta: {
-                name: '搜索列表（文章）'
+                name: '搜索列表（文章）',
               },
               component: () => import('../views/Articles.vue'),
             },
-          ]
+            {
+              path: '/projects',
+              name: 'projects',
+              meta: {
+                name: '搜索列表（项目）',
+              },
+              component: () => import('../views/Articles.vue'),
+            },
+            {
+              path: '/applications',
+              name: 'applications',
+              meta: {
+                name: '搜索列表（文章）',
+              },
+              component: () => import('../views/Articles.vue'),
+            },
+          ],
         },
         {
           path: '/table',
@@ -65,7 +67,7 @@ const router = createRouter({
           meta: {
             title: '表格',
             name: '简单表格',
-            icon: 'List'
+            icon: 'List',
           },
           component: () => import('../views/Table.vue'),
         },
@@ -74,7 +76,7 @@ const router = createRouter({
           name: 'complexTable',
           meta: {
             name: '复杂表格',
-            parent: '/table'
+            parent: '/table',
           },
           component: () => import('../views/ComplexTable.vue'),
         },
@@ -84,7 +86,7 @@ const router = createRouter({
           meta: {
             title: '表单',
             name: '基础表单',
-            icon: 'Document'
+            icon: 'Document',
           },
           component: () => import('../views/BasicForm.vue'),
         },
@@ -93,7 +95,7 @@ const router = createRouter({
           name: 'stepForm',
           meta: {
             name: '基础表单',
-            parent: '/basicForm'
+            parent: '/basicForm',
           },
           component: () => import('../views/StepForm.vue'),
         },
@@ -107,6 +109,14 @@ const router = createRouter({
           component: () => import('../views/AccountCenter.vue'),
         },
       ],
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      meta: {
+        title: '未知页面',
+      },
+      component: () => import('../views/NotFound.vue'),
     },
   ],
 });
