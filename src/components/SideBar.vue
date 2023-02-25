@@ -24,9 +24,9 @@ const defaultActive = computed(() => {
   return route.path;
 });
 
-const routes = router.options.routes.find((item) => item.path == '/')?.children;
-
-console.log('routes====', routes);
+const routes = router.options.routes.find(
+  (item) => item.name == 'home'
+)?.children;
 
 const map = {} as MapType;
 
@@ -47,13 +47,9 @@ routes?.forEach((item: RouteRecordRaw) => {
   }
 });
 
-console.log('map!!!', map);
-
 const siderBar = [] as SideBar[];
 
 Object.keys(map).forEach((key) => {
-  console.log('key', key);
-
   if (map[key].length == 1) {
     const t = map[key].find((i: any) => i.path == key);
     if (!t) return;
@@ -67,7 +63,6 @@ Object.keys(map).forEach((key) => {
   if (map[key].length > 1) {
     const t = map[key].find((i: any) => i.path == key);
     if (!t) return;
-    console.log('ttttttt', t);
     siderBar.push({
       index: t.path,
       title: t.meta?.title || t.meta?.name,
@@ -78,7 +73,6 @@ Object.keys(map).forEach((key) => {
 });
 
 function handel(data: any) {
-  console.log('data', data);
   return data.map((item: any) => {
     return {
       index: item.path,
@@ -88,8 +82,6 @@ function handel(data: any) {
     };
   });
 }
-
-console.log('siderBar', siderBar);
 </script>
 
 <template>

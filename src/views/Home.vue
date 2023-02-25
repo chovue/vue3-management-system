@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import SideBar from '../components/SideBar.vue';
 import MessageDropdown from '../components/MessageDropdown.vue';
+import Tabs from '../components/Tabs.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -73,6 +74,7 @@ const username = localStorage.getItem('username') || '';
       </el-aside>
       <!-- 主显示 -->
       <el-main>
+        <Tabs></Tabs>
         <!-- header 面包屑 -->
         <el-breadcrumb separator="/" style="margin-bottom: 12px">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
