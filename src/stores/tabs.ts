@@ -6,18 +6,24 @@ interface ListItem {
   title: string;
 }
 
-export const useTagsStore = defineStore('tags', {
+export const useTabsStore = defineStore('tabs', {
   state: () => {
     return {
       list: <ListItem[]>[]
     };
   },
   actions: {
-    delTagsItem(index: number) {
+    delTabsItem(index: number) {
       this.list.splice(index, 1);
     },
-    setTagsItem(data: ListItem) {
+    setTabsItem(data: ListItem) {
       this.list.push(data);
     },
+    delAllTabs() {
+      this.list = []
+    },
+    delExcept(index: number) {
+      this.list = [this.list[index]];
+    }
   }
 });

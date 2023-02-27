@@ -1,31 +1,35 @@
 <template>
-  <el-tabs
-    v-model="editableTabsValue"
-    type="card"
-    class="demo-tabs"
-    closable
-    @tab-click="clickTab"
-    @tab-remove="removeTab"
-    @contextmenu.prevent="showOptions = true"
-  >
-    <el-tab-pane
-      v-for="item in tags.list"
-      :key="item.name"
-      :label="item.title"
-      :name="item.name"
+  <div>
+    <el-tabs
+      v-model="editableTabsValue"
+      type="card"
+      class="demo-tabs"
+      closable
+      @tab-click="clickTab"
+      @tab-remove="removeTab"
     >
-    </el-tab-pane>
-  </el-tabs>
-  <div v-show="showOptions" ref="target">
-    <span class="el-popper__arrow" data-popper-arrow=""></span>
-    <ul class="contextmenu">
-      <li>关闭其它</li>
-      <li>全部关闭</li>
-    </ul>
+      <el-tab-pane v-for="item in tabs.list" :key="item.name" :name="item.name">
+        <template #label>
+          <el-dropdown trigger="contextmenu">
+            <span :class="{ 'is-active': item.name == editableTabsValue }">
+              {{ item.title }}
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="closeOther(item.name)"
+                  >关闭其它</el-dropdown-item
+                >
+                <el-dropdown-item @click="closeAll">全部关闭</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </template>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 <script lang="ts" setup>
-import { useTagsStore } from '@/stores/tags';
+import { useTabsStore } from '@/stores/tabs';
 import type { TabPaneName, TabsPaneContext } from 'element-plus';
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -33,26 +37,26 @@ import { onClickOutside } from '@vueuse/core';
 
 const route = useRoute();
 const router = useRouter();
-const tags = useTagsStore();
+const tabs = useTabsStore();
 
 const editableTabsValue = ref();
 watch(
   route,
   () => {
     editableTabsValue.value = route.name;
-    setTags(route);
+    setTabs(route);
   },
   {
     immediate: true,
   }
 );
 // 设置标签
-function setTags(route: any) {
-  const isExist = tags.list.some((item) => {
+function setTabs(route: any) {
+  const isExist = tabs.list.some((item) => {
     return item.path === route.fullPath;
   });
   if (!isExist) {
-    tags.setTagsItem({
+    tabs.setTabsItem({
       name: route.name,
       title: route.meta.name || route.meta.title,
       path: route.fullPath,
@@ -65,23 +69,26 @@ function clickTab(pane: TabsPaneContext, ev: Event) {
 }
 // 单个tab移除
 const removeTab = (name: TabPaneName) => {
-  const index = tags.list.findIndex((item) => item.name == name);
-  tags.delTagsItem(index);
-  if (tags.list.length === 0) {
+  const index = tabs.list.findIndex((item) => item.name == name);
+  tabs.delTabsItem(index);
+  if (tabs.list.length === 0) {
     router.push('/');
   } else {
-    const item = tags.list[tags.list.length - 1];
+    const item = tabs.list[tabs.list.length - 1];
     // 最后一个链接
     router.push(item.path);
   }
 };
 
-// 右键出操作面板
-const showOptions = ref(false);
-
-const target = ref(null);
-
-onClickOutside(target, (event) => (showOptions.value = false));
+// 右键操作列相关方法
+function closeOther(name: string) {
+  const index = tabs.list.findIndex((item) => item.name == name);
+  tabs.delExcept(index);
+}
+function closeAll() {
+  tabs.delAllTabs();
+  router.push('/');
+}
 </script>
 <style scoped lang="scss">
 .el-tabs {
@@ -89,43 +96,10 @@ onClickOutside(target, (event) => (showOptions.value = false));
   top: 8px;
   margin-left: -21px;
 }
-.contextmenu {
-  margin: 0;
-  background: #fff;
-  z-index: 3000;
-  position: absolute;
-  top: 50px;
-  list-style-type: none;
-  padding: 5px 0;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #333;
-  box-shadow: var(--el-box-shadow-light);
-}
-
-.contextmenu li {
-  margin: 0;
-  padding: 7px 16px;
-  font-size: var(el-font-size-base);
-  color: var(--el-text-color-regular);
-  cursor: pointer;
-}
-
-.contextmenu li:hover {
-  background-color: var(--el-color-primary-light-9);
-  color: var(--el-color-primary);
-}
-
-.el-popper__arrow {
-  z-index: 9999;
-  top: 46px;
-  left: 252px;
-  &::before {
-    border: 1px solid var(--el-border-color-light);
-    background: var(--el-bg-color-overlay);
-    border-bottom-color: transparent !important;
-    border-right-color: transparent !important;
+.el-dropdown {
+  padding-top: 12px;
+  .is-active {
+    color: var(--el-color-primary);
   }
 }
 </style>
