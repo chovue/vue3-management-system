@@ -85,6 +85,15 @@ const router = createRouter({
           component: () => import('../views/ComplexTable.vue'),
         },
         {
+          path: '/treeTable',
+          name: 'treeTable',
+          meta: {
+            name: '懒加载树',
+            parent: '/table',
+          },
+          component: () => import('../views/TreeTable.vue'),
+        },
+        {
           path: '/basicForm',
           name: 'basicForm',
           meta: {
