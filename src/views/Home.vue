@@ -1,12 +1,8 @@
 <script setup lang="ts" name="home">
 import { computed } from 'vue';
-import {
-  RouterView,
-  useRoute,
-  useRouter,
-  type RouteRecordRaw,
-} from 'vue-router';
+import { RouterView, useRoute, useRouter } from 'vue-router';
 import SideBar from '../components/SideBar.vue';
+import MessageDropdown from '../components/MessageDropdown.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -48,13 +44,15 @@ const username = localStorage.getItem('username') || '';
             src="https://img.shields.io/github/stars/chodocs/chodocs?style=social"
           />
         </a>
+        <!-- 消息通知 -->
+        <MessageDropdown />
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             <img src="../assets/user.svg" alt="" />
             <span class="name"> {{ username }}</span>
             <el-icon>
-              <component is="ArrowDown"></component>
+              <ArrowDown />
             </el-icon>
           </span>
           <template #dropdown>
