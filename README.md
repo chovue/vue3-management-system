@@ -1,51 +1,59 @@
 # vue3-management-system
-Language: English | [中文简体](README-ZH.md)
 
-This template should help get you started developing with Vue 3 in Vite.
+文档语言: [English](README-EN.md) | 中文简体
 
-## Introduce
+基于 Vue3 全家桶开发的后台管理系统，[线上地址在这](https://vue3-management-system.vercel.app/login)。适用于自学 Vue3 的同学，以及外包项目快速交付。
 
-The main branch is used to ensure that you can run it first, and then we will create a branch for requirements
+## 技术栈
 
-## Recommended IDE Setup
+该项目使用技术栈如下：
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [x] Vue 3：前端框架
+- [x] TypeScript：语言
+- [x] Vite：打包工具
+- [x] Pinia：状态管理
+- [x] Vue Router：路由管理
+- [x] Element Plus：UI 组件库
+- [x] Echarts：图表
+- [x] Axios：网络请求
 
-## Type Support for `.vue` Imports in TS
+## 项目截图
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+登录页：
+![image](https://user-images.githubusercontent.com/51811652/227832497-7bc46908-d818-48ce-8ecd-bac57c3d9855.png)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+首页：
+![image](https://user-images.githubusercontent.com/51811652/227833231-3b91552a-618f-41de-bbc1-fc6f68177a7d.png)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+表格：
+![image](https://user-images.githubusercontent.com/51811652/227835053-4d680143-b165-4bbf-9f04-97c4a5422635.png)
 
-## Customize configuration
+## 安装
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```
+# 克隆项目
+git clone https://github.com/HearLing/vue3-management-system.git
 
-## Project Setup
+# 进入项目目录
+cd vue3-management-system
 
-```sh
+# 安装依赖
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# 本地开发，启动服务
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# 打包构建
 npm run build
-```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+# ESLint修复
 npm run lint
 ```
+
+## 参考资料
+
+- [x] [参考项目](https://preview.pro.ant.design/dashboard/analysis)
+- [x] [Vue3 中文文档](https://cn.vuejs.org)
+- [x] [Vue Router 中文文档](https://router.vuejs.org/zh/)
+- [x] [Pinia 中文文档](https://pinia.vuejs.org/zh/)
+- [x] [Element Plus 中文文档](https://element-plus.gitee.io/zh-CN/guide/quickstart.html)
