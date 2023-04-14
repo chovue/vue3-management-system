@@ -8,19 +8,19 @@ const tabName = ref('通知');
 const notices = reactive([
   {
     read: false,
-    logo: '../assets/user.svg',
+    logo: 'src/assets/user.svg',
     content: '你收到了 14 份新周报',
     time: '6年前',
   },
   {
     read: false,
-    logo: '../assets/user.svg',
+    logo: 'src/assets/user.svg',
     content: '你收到了 14 份新周报',
     time: '6年前',
   },
   {
     read: true,
-    logo: '../assets/user.svg',
+    logo: 'src/assets/user.svg',
     content: '你收到了 14 份新周报',
     time: '6年前',
   },
