@@ -6,7 +6,11 @@
         <template #title>
           <div style="display: inline-flex; align-items: center">
             每日活跃人数
-            <el-tooltip effect="dark" content="一天内登录产品的用户数" placement="top">
+            <el-tooltip
+              effect="dark"
+              content="一天内登录产品的用户数"
+              placement="top"
+            >
               <el-icon style="margin-left: 4px" :size="12">
                 <Warning />
               </el-icon>
@@ -26,13 +30,17 @@
         </div>
       </div>
     </div>
-    <div class="line"></div>
+    <div class="line" />
     <div class="statistic-card">
       <el-statistic :value="693700">
         <template #title>
           <div style="display: inline-flex; align-items: center">
             每月活跃人数
-            <el-tooltip effect="dark" content="一个月内登录产品的用户数" placement="top">
+            <el-tooltip
+              effect="dark"
+              content="一个月内登录产品的用户数"
+              placement="top"
+            >
               <el-icon style="margin-left: 4px" :size="12">
                 <Warning />
               </el-icon>
@@ -55,15 +63,10 @@
   </div>
 </template>
 
-<script lang='ts' setup>
-import {
-  ArrowRight,
-  CaretBottom,
-  CaretTop,
-  Warning,
-} from '@element-plus/icons-vue'
+<script lang="ts" setup>
+import { CaretBottom, CaretTop, Warning } from '@element-plus/icons-vue';
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .line {
   border: 1px solid var(--el-card-border-color);
 }
@@ -71,7 +74,6 @@ import {
 :global(h2#card-usage ~ .example .example-showcase) {
   background-color: var(--el-fill-color) !important;
 }
-
 
 .el-statistic {
   --el-statistic-content-font-size: 28px;

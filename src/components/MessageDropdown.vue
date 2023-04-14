@@ -72,7 +72,7 @@ const handleClickMessage = (tab: TabsPaneContext, event: Event) => {
   console.log(tab, event);
 };
 
-const handleClickItem = (item: any, event: Event) => {
+const handleClickItem = (item: any) => {
   item.read = true;
 };
 
@@ -112,9 +112,9 @@ const handleMore = () => {
           stretch
           @tab-click="handleClickMessage"
         >
-          <el-tab-pane label="通知" name="通知"></el-tab-pane>
-          <el-tab-pane label="消息" name="消息"> </el-tab-pane>
-          <el-tab-pane label="待办" name="待办"> </el-tab-pane>
+          <el-tab-pane label="通知" name="通知" />
+          <el-tab-pane label="消息" name="消息" />
+          <el-tab-pane label="待办" name="待办" />
         </el-tabs>
         <div class="dropdown-wrapper" v-if="tabName === '通知'">
           <div

@@ -27,14 +27,14 @@
             <el-input v-model="form.acceptAccount">
               <template #prepend>
                 <el-select v-model="form.type">
-                  <el-option label="支付宝" :value="1"></el-option>
-                  <el-option label="微信支付" :value="2"></el-option>
+                  <el-option label="支付宝" :value="1" />
+                  <el-option label="微信支付" :value="2" />
                 </el-select>
               </template>
             </el-input>
           </el-form-item>
           <el-form-item label="收款人姓名" prop="name">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.name" />
           </el-form-item>
           <el-form-item label="转账金额" prop="price">
             <el-input-number
@@ -42,8 +42,7 @@
               controls-position="right"
               :min="1"
               :max="1000"
-            >
-            </el-input-number>
+            />
           </el-form-item>
         </div>
         <div v-show="active === 1">
@@ -76,7 +75,7 @@
               v-model="form.pass"
               type="passworld"
               placeholder="请输入"
-            ></el-input>
+            />
           </el-form-item>
         </div>
         <div v-show="active === 2">
@@ -84,7 +83,7 @@
             icon="success"
             title="操作成功"
             sub-title="预计两小时内到账"
-          ></el-result>
+          />
 
           <el-descriptions title="账单信息" :column="1" border>
             <el-descriptions-item label="付款账户"
@@ -125,9 +124,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Edit, Picture, Upload, Money } from '@element-plus/icons-vue';
-import { reactive, ref, onMounted } from 'vue';
-interface DataProps {}
+import { Edit, Picture, Upload } from '@element-plus/icons-vue';
+import { reactive, ref } from 'vue';
+
 const active = ref(0);
 
 const form = reactive({

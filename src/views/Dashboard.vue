@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as echarts from 'echarts';
-import { onMounted, onUpdated, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Card from '../components/Card.vue';
 import TodoList from '../components/TodoList.vue';
 import Statistic from '@/components/Statistic.vue';
@@ -315,13 +315,13 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
       <el-col :span="8">
         <el-card shadow="hover">
           <h2>商品类别占比</h2>
-          <div class="pie-container" ref="pie"></div>
+          <div class="pie-container" ref="pie" />
         </el-card>
       </el-col>
       <el-col :span="16">
         <el-card shadow="hover">
           <h2>商品销售利润率</h2>
-          <div class="line-container" ref="line"></div>
+          <div class="line-container" ref="line" />
         </el-card>
       </el-col>
     </el-row>
@@ -336,7 +336,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
             <el-tab-pane label="销售额" name="sales" />
             <el-tab-pane label="访问量" name="visits" />
             <div class="data-analysis-container">
-              <div class="histogram-container" ref="histogram"></div>
+              <div class="histogram-container" ref="histogram" />
               <div class="rank">
                 <h4>门店{{ tabName[activeName] }}排名</h4>
                 <ul v-for="(item, index) in storeData" :key="item.name">
