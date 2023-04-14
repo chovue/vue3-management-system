@@ -40,7 +40,6 @@ const clickBtn = () => {
 };
 
 const deletItem = (item: ListItem) => {
-  console.log('item', item);
   todoStore.delTodo(item.id);
 };
 </script>

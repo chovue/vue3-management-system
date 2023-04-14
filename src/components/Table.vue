@@ -160,7 +160,6 @@ const detailId = ref('');
 const getData = () => {
   table.loading = true;
   get('/api/shopList', {}).then((res: any) => {
-    console.log('data==>', res.data);
     table.loading = false;
     const { code, data, msg } = res.data;
     if (code == 200) {

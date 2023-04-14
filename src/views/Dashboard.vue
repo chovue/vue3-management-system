@@ -280,15 +280,12 @@ onMounted(() => {
 });
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event);
   if (tab.props.name === 'sales') {
     myHistogram.clear();
     myHistogram.setOption(optionSales);
-    console.log('销售额');
   } else if (tab.props.name === 'visits') {
     myHistogram.clear();
     myHistogram.setOption(optionVisits);
-    console.log('访问量');
   }
 };
 </script>

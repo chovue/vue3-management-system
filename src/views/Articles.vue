@@ -117,7 +117,6 @@ function getdata() {
   get<any>('/api/article').then((res) => {
     article.loading = false;
     const { code, data, msg } = res.data;
-    console.log('data: ', res);
     if (code == 200) {
       article.data = data;
     } else {

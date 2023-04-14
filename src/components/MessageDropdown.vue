@@ -68,10 +68,6 @@ const todos = reactive([
   },
 ]);
 
-const handleClickMessage = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event);
-};
-
 const handleClickItem = (item: any) => {
   item.read = true;
 };
@@ -79,7 +75,6 @@ const handleClickItem = (item: any) => {
 const handleClear = () => {
   switch (tabName.value) {
     case '通知':
-      console.log('清空通知');
       notices.forEach((item) => (item.read = true));
       break;
     case '消息':
@@ -99,7 +94,7 @@ const handleMore = () => {
 <template>
   <el-dropdown trigger="click">
     <el-badge :value="12" class="item message">
-      <el-icon size="20px" @click="handleClickMessage">
+      <el-icon size="20px">
         <Bell />
       </el-icon>
     </el-badge>
@@ -110,7 +105,6 @@ const handleMore = () => {
           v-model="tabName"
           class="demo-tabs"
           stretch
-          @tab-click="handleClickMessage"
         >
           <el-tab-pane label="通知" name="通知" />
           <el-tab-pane label="消息" name="消息" />

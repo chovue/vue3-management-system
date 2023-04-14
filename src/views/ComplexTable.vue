@@ -299,7 +299,6 @@ async function del() {
     return;
   }
   const name = selectRecords.map((i) => i.name).join(',');
-  console.log('selectRecords', selectRecords, name);
   ElMessageBox.confirm(
     `你确定删除：【${name}】 这${selectRecords.length}条数据吗？`,
     '删除操作',
