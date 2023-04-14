@@ -61,7 +61,6 @@
 </template>
 
 <script lang="ts" setup>
-import { auto } from '@popperjs/core';
 import { ElMessage, ElMessageBox, type Action } from 'element-plus';
 import { reactive, ref } from 'vue';
 import type { VxeGridProps, VxeGridInstance } from 'vxe-table';
