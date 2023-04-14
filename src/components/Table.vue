@@ -156,7 +156,7 @@ const options = [
   },
 ];
 
-const detailId = '';
+const detailId = ref('');
 const getData = () => {
   table.loading = true;
   get('/api/shopList', {}).then((res: any) => {
