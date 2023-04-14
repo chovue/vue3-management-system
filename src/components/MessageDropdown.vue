@@ -119,7 +119,7 @@ const handleMore = () => {
         <div class="dropdown-wrapper" v-if="tabName === '通知'">
           <div
             class="notice-container"
-            @click="handleClickItem(notice, $event)"
+            @click="handleClickItem(notice)"
             v-for="(notice, index) in notices"
             :class="notice.read ? 'read' : ''"
             :key="index"
@@ -138,7 +138,7 @@ const handleMore = () => {
             class="message-container"
             v-for="(message, index) in messages"
             :class="message.read ? 'read' : ''"
-            @click="handleClickItem(message, $event)"
+            @click="handleClickItem(message)"
             :key="index"
           >
             <div class="message-logo">
@@ -160,7 +160,7 @@ const handleMore = () => {
             v-for="(todo, index) in todos"
             :key="index"
             :class="todo.read ? 'read' : ''"
-            @click="handleClickItem(todo, $event)"
+            @click="handleClickItem(todo)"
           >
             <div class="todo-title">{{ todo.title }}</div>
             <el-tag class="todo-status">{{ todo.status }}</el-tag>
