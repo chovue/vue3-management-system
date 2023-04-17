@@ -1,19 +1,19 @@
 <template>
   <div class="todo-list">
-    <div className='content'>
-      <div className='todoListDiv'>
-        <div className='inputDiv'>
+    <div className="content">
+      <div className="todoListDiv">
+        <div className="inputDiv">
           <input v-model="inputValue" placeholder="添加待办事项" />
-          <button @click="clickBtn"></button>
+          <button @click="clickBtn" />
         </div>
-        <div className='listDiv'>
-          <ul v-for="item in todoStore.todoList">
+        <div className="listDiv">
+          <ul v-for="item in todoStore.todoList" :key="item.id">
             <li class="task-list-item" :key="item.id">
               <label class="task-list-item-label">
                 <el-checkbox v-model="item.complete" />
                 <span> {{ item.content }}</span>
               </label>
-              <span class="delete-btn" @click="deletItem(item)"></span>
+              <span class="delete-btn" @click="deletItem(item)" />
             </li>
           </ul>
         </div>
@@ -25,24 +25,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useTodos } from '@/stores/todos';
-import type { ListItem } from '@/stores/todos'
+import type { ListItem } from '@/stores/todos';
 
 const todoStore = useTodos();
 
-const inputValue = ref('')
+const inputValue = ref('');
 
 const clickBtn = () => {
   if (inputValue.value.length === 0) {
-    return
+    return;
   }
-  todoStore.addTodo(inputValue.value)
-  inputValue.value = ''
-}
+  todoStore.addTodo(inputValue.value);
+  inputValue.value = '';
+};
 
 const deletItem = (item: ListItem) => {
-  console.log('item', item)
-  todoStore.delTodo(item.id)
-}
+  todoStore.delTodo(item.id);
+};
 </script>
 
 <style scoped lang="scss">
@@ -73,7 +72,7 @@ input {
   background-color: transparent;
 }
 
-.is-checked+span {
+.is-checked + span {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: line-through rgba(255, 255, 255, 0.8);
 }
@@ -86,7 +85,7 @@ button {
   background-size: 44px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('../assets/add.svg')
+  background-image: url('../assets/add.svg');
 }
 
 .inputDiv {
@@ -99,7 +98,6 @@ ul {
   padding-right: 12px;
 }
 
-
 .task-list-item {
   color: #5470c6;
   font-size: 16px;
@@ -110,8 +108,6 @@ ul {
   display: flex;
   align-items: center;
   padding: 8px;
-
-
 }
 
 .el-checkbox {

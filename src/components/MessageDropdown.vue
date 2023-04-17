@@ -8,19 +8,19 @@ const tabName = ref('通知');
 const notices = reactive([
   {
     read: false,
-    logo: '../assets/user.svg',
+    logo: 'src/assets/user.svg',
     content: '你收到了 14 份新周报',
     time: '6年前',
   },
   {
     read: false,
-    logo: '../assets/user.svg',
+    logo: 'src/assets/user.svg',
     content: '你收到了 14 份新周报',
     time: '6年前',
   },
   {
     read: true,
-    logo: '../assets/user.svg',
+    logo: 'src/assets/user.svg',
     content: '你收到了 14 份新周报',
     time: '6年前',
   },
@@ -68,18 +68,13 @@ const todos = reactive([
   },
 ]);
 
-const handleClickMessage = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event);
-};
-
-const handleClickItem = (item: any, event: Event) => {
+const handleClickItem = (item: any) => {
   item.read = true;
 };
 
 const handleClear = () => {
   switch (tabName.value) {
     case '通知':
-      console.log('清空通知');
       notices.forEach((item) => (item.read = true));
       break;
     case '消息':
@@ -99,7 +94,7 @@ const handleMore = () => {
 <template>
   <el-dropdown trigger="click">
     <el-badge :value="12" class="item message">
-      <el-icon size="20px" @click="handleClickMessage">
+      <el-icon size="20px">
         <Bell />
       </el-icon>
     </el-badge>
@@ -110,16 +105,15 @@ const handleMore = () => {
           v-model="tabName"
           class="demo-tabs"
           stretch
-          @tab-click="handleClickMessage"
         >
-          <el-tab-pane label="通知" name="通知"></el-tab-pane>
-          <el-tab-pane label="消息" name="消息"> </el-tab-pane>
-          <el-tab-pane label="待办" name="待办"> </el-tab-pane>
+          <el-tab-pane label="通知" name="通知" />
+          <el-tab-pane label="消息" name="消息" />
+          <el-tab-pane label="待办" name="待办" />
         </el-tabs>
         <div class="dropdown-wrapper" v-if="tabName === '通知'">
           <div
             class="notice-container"
-            @click="handleClickItem(notice, $event)"
+            @click="handleClickItem(notice)"
             v-for="(notice, index) in notices"
             :class="notice.read ? 'read' : ''"
             :key="index"
@@ -138,7 +132,7 @@ const handleMore = () => {
             class="message-container"
             v-for="(message, index) in messages"
             :class="message.read ? 'read' : ''"
-            @click="handleClickItem(message, $event)"
+            @click="handleClickItem(message)"
             :key="index"
           >
             <div class="message-logo">
@@ -160,7 +154,7 @@ const handleMore = () => {
             v-for="(todo, index) in todos"
             :key="index"
             :class="todo.read ? 'read' : ''"
-            @click="handleClickItem(todo, $event)"
+            @click="handleClickItem(todo)"
           >
             <div class="todo-title">{{ todo.title }}</div>
             <el-tag class="todo-status">{{ todo.status }}</el-tag>

@@ -96,7 +96,7 @@ function handel(data: any) {
         <el-sub-menu :index="item.index" :key="item.index">
           <template #title>
             <el-icon v-if="item.icon">
-              <component :is="item.icon"></component>
+              <component :is="item.icon" />
             </el-icon>
             <span>{{ item.title }}</span>
           </template>
@@ -113,14 +113,16 @@ function handel(data: any) {
                 <el-menu-item :index="s.index">{{ s.title }}</el-menu-item>
               </template>
             </el-sub-menu>
-            <el-menu-item v-else :index="ss.index">{{ ss.title }}</el-menu-item>
+            <el-menu-item v-else :index="ss.index" :key="ss.index">{{
+              ss.title
+            }}</el-menu-item>
           </template>
         </el-sub-menu>
       </template>
       <template v-else>
-        <el-menu-item :index="item.index">
+        <el-menu-item :index="item.index" :key="item.index">
           <el-icon v-if="item.icon">
-            <component :is="item.icon"></component>
+            <component :is="item.icon" />
           </el-icon>
           <template #title>{{ item.title }}</template>
         </el-menu-item>

@@ -10,7 +10,7 @@
           placeholder="请输入"
           size="large"
           style="width: 400px"
-        ></el-input>
+        />
         <el-button type="primary" size="large">搜索</el-button>
       </div>
     </div>
@@ -99,12 +99,9 @@ const activeName = computed(() => {
   return route.name as string;
 });
 // 点击tab切换路由
-function clickTab(pane: TabsPaneContext, ev: Event) {
+function clickTab(pane: TabsPaneContext) {
   router.push('/' + pane.paneName);
 }
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event);
-};
 const article = reactive({
   loading: false,
   input: '',
@@ -120,7 +117,6 @@ function getdata() {
   get<any>('/api/article').then((res) => {
     article.loading = false;
     const { code, data, msg } = res.data;
-    console.log('data: ', res);
     if (code == 200) {
       article.data = data;
     } else {

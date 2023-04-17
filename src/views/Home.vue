@@ -70,11 +70,11 @@ const username = localStorage.getItem('username') || '';
     <el-container class="fillcontain">
       <!-- 侧边显示 -->
       <el-aside class="aside">
-        <SideBar></SideBar>
+        <SideBar />
       </el-aside>
       <!-- 主显示 -->
       <el-main>
-        <Tabs></Tabs>
+        <Tabs />
         <!-- header 面包屑 -->
         <el-breadcrumb separator="/" style="margin-bottom: 12px">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -84,7 +84,7 @@ const username = localStorage.getItem('username') || '';
         </el-breadcrumb>
         <RouterView v-slot="{ Component }">
           <keep-alive>
-            <component :is="Component"></component>
+            <component :is="Component" />
           </keep-alive>
         </RouterView>
       </el-main>

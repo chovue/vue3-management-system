@@ -1,11 +1,15 @@
-
 import axios from 'axios';
-import type { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig, AxiosInterceptorManager } from 'axios';
+import type {
+  AxiosInstance,
+  AxiosError,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 // 数据返回的接口
 // 定义请求响应参数，不含data
 interface Result {
   code: number;
-  msg: string
+  msg: string;
 }
 
 // 请求响应参数，包含data
@@ -13,7 +17,7 @@ interface ResultData<T = any> extends Result {
   data?: T;
 }
 
-const MOCKURL: string = 'https://mock.apifox.cn/m1/2328533-0-default'
+const MOCKURL = 'https://mock.apifox.cn/m1/2328533-0-default';
 
 const service: AxiosInstance = axios.create({
   baseURL: MOCKURL,
@@ -21,8 +25,8 @@ const service: AxiosInstance = axios.create({
 });
 
 /**
-* 请求拦截器
-*/
+ * 请求拦截器
+ */
 service.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     return config;
@@ -37,7 +41,7 @@ service.interceptors.request.use(
  */
 service.interceptors.response.use(
   (response: AxiosResponse | any) => {
-    response
+    response;
     if (response.status === 200) {
       return response;
     } else {

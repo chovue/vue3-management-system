@@ -32,7 +32,7 @@ const submit = (formEl: FormInstance | undefined) => {
   formEl.validate((valid) => {
     if (valid) {
       //todo 获取token
-      let token: string = 'IrARveFpnY7IXu8YAv0XQdowc7i1lPtO';
+      const token = 'IrARveFpnY7IXu8YAv0XQdowc7i1lPtO';
       ElMessage({
         message: '登录成功 ~',
         type: 'success',
@@ -104,8 +104,8 @@ const registerRules = reactive<FormRules>({
 
 <template>
   <div class="login-page">
-    <div class="ball"></div>
-    <div class="shadow"></div>
+    <div class="ball" />
+    <div class="shadow" />
 
     <div class="login-card">
       <div class="change-btn">

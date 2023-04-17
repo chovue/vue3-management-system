@@ -8,8 +8,8 @@
           <vxe-form-item>
             <template #default>
               <el-select placeholder="选择商品" v-model="queryParams.type">
-                <el-option value="1" label="A级商品"></el-option>
-                <el-option value="2" label="B级商品"></el-option>
+                <el-option value="1" label="A级商品" />
+                <el-option value="2" label="B级商品" />
               </el-select>
             </template>
           </vxe-form-item>
@@ -19,53 +19,44 @@
                 v-model="queryParams.name"
                 type="text"
                 placeholder="请输入名称"
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item>
             <template #default>
               <!-- 用from表单方法 -->
-              <vxe-button
-                type="submit"
-                status="primary"
-                content="搜索"
-              ></vxe-button>
-              <vxe-button type="reset" content="重置"></vxe-button>
+              <vxe-button type="submit" status="primary" content="搜索" />
+              <vxe-button type="reset" content="重置" />
               <!-- 自定义方法  -->
-              <vxe-button
-                type="insert"
-                content="新增"
-                @click="addRow"
-              ></vxe-button>
-              <vxe-button type="save" content="保存" @click="save"></vxe-button>
-              <vxe-button type="del" content="删除" @click="del"></vxe-button>
+              <vxe-button type="insert" content="新增" @click="addRow" />
+              <vxe-button type="save" content="保存" @click="save" />
+              <vxe-button type="del" content="删除" @click="del" />
             </template>
           </vxe-form-item>
         </vxe-form>
       </template>
 
       <template #name_edit="{ row }">
-        <vxe-input v-model="row.name"></vxe-input>
+        <vxe-input v-model="row.name" />
       </template>
       <template #nickname_edit="{ row }">
-        <vxe-input v-model="row.nickname"></vxe-input>
+        <vxe-input v-model="row.nickname" />
       </template>
       <template #role_edit="{ row }">
-        <vxe-input v-model="row.role"></vxe-input>
+        <vxe-input v-model="row.role" />
       </template>
       <template #address_edit="{ row }">
-        <vxe-input v-model="row.address"></vxe-input>
+        <vxe-input v-model="row.address" />
       </template>
     </vxe-grid>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { auto } from '@popperjs/core';
-import { ElMessage, ElMessageBox, type Action } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { reactive, ref } from 'vue';
 import type { VxeGridProps, VxeGridInstance } from 'vxe-table';
-import { get, post } from '../api/index';
+import { post } from '../api/index';
 interface Filters {
   sex: string;
 }
@@ -308,7 +299,6 @@ async function del() {
     return;
   }
   const name = selectRecords.map((i) => i.name).join(',');
-  console.log('selectRecords', selectRecords, name);
   ElMessageBox.confirm(
     `你确定删除：【${name}】 这${selectRecords.length}条数据吗？`,
     '删除操作',

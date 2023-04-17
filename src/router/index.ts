@@ -98,7 +98,7 @@ const router = createRouter({
           path: '/stepForm',
           name: 'stepForm',
           meta: {
-            name: '基础表单',
+            name: '分步表单',
             parent: '/basicForm',
           },
           component: () => import('../views/StepForm.vue'),

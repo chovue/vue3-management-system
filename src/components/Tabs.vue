@@ -4,18 +4,25 @@
       v-model="editableTabsValue"
       type="card"
       class="demo-tabs"
-      closable
       @tab-click="clickTab"
       @tab-remove="removeTab"
     >
-      <el-tab-pane v-for="item in tabs.list" :key="item.name" :name="item.name">
+      <el-tab-pane
+        v-for="(item, key) in tabs.list"
+        :key="key"
+        :name="item.name"
+        :closable="!item.fixed"
+      >
         <template #label>
-          <el-dropdown trigger="contextmenu">
+          <el-dropdown trigger="contextmenu" popper-class="dropdown">
             <span :class="{ 'is-active': item.name == editableTabsValue }">
               {{ item.title }}
             </span>
-            <template #dropdown>
+            <template #dropdown v-if="item.name == editableTabsValue">
               <el-dropdown-menu>
+                <el-dropdown-item @click="fixed(item.name, item.fixed)">{{
+                  item.fixed ? '取消固定' : '固定'
+                }}</el-dropdown-item>
                 <el-dropdown-item @click="closeOther(item.name)"
                   >关闭其它</el-dropdown-item
                 >
@@ -31,9 +38,8 @@
 <script lang="ts" setup>
 import { useTabsStore } from '@/stores/tabs';
 import type { TabPaneName, TabsPaneContext } from 'element-plus';
-import { ref, watch } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { onClickOutside } from '@vueuse/core';
 
 const route = useRoute();
 const router = useRouter();
@@ -50,6 +56,7 @@ watch(
     immediate: true,
   }
 );
+
 // 设置标签
 function setTabs(route: any) {
   const isExist = tabs.list.some((item) => {
@@ -60,11 +67,12 @@ function setTabs(route: any) {
       name: route.name,
       title: route.meta.name || route.meta.title,
       path: route.fullPath,
+      fixed: false,
     });
   }
 }
 // 点击tab切换路由
-function clickTab(pane: TabsPaneContext, ev: Event) {
+function clickTab(pane: TabsPaneContext) {
   router.push('/' + pane.paneName);
 }
 // 单个tab移除
@@ -89,15 +97,22 @@ function closeAll() {
   tabs.delAllTabs();
   router.push('/');
 }
+function fixed(name: string, fixed: boolean) {
+  const index = tabs.list.findIndex((item) => item.name == name);
+  fixed ? tabs.cancelFixedTabs(index) : tabs.fixedTabsItem(index);
+}
 </script>
 <style scoped lang="scss">
 .el-tabs {
+  transition: none;
   position: absolute;
   top: 8px;
   margin-left: -21px;
 }
+
 .el-dropdown {
   padding-top: 12px;
+
   .is-active {
     color: var(--el-color-primary);
   }
