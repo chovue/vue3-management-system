@@ -112,6 +112,15 @@ const router = createRouter({
           },
           component: () => import('../views/AccountCenter.vue'),
         },
+        {
+          path: '/components',
+          name: 'components',
+          meta: {
+            icon: 'Grid',
+            title: '组件',
+          },
+          component: () => import('../views/components/index.vue'),
+        },
       ],
     },
     {

@@ -12,6 +12,7 @@ import axios from 'axios';
 import VXETable from 'vxe-table';
 import 'vxe-table/lib/style.css';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
+import 'tailwindcss/tailwind.css'; // tailwindcss样式
 
 const app = createApp(App);
 
